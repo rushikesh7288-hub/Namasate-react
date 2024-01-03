@@ -1,0 +1,23 @@
+{
+  "name": "namasate-react",
+  "version": "1.0.0",
+  "description": "This is Namaqsate React by Rushikesh Jadhav",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushikesh7288-hub/Namasate-react.git"
+  },
+  "keywords": [],
+  "author": "Rushikesh Jadhav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rushikesh7288-hub/Namasate-react/issues"
+  },
+  "homepage": "https://github.com/rushikesh7288-hub/Namasate-react#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3"
+  }
+}
