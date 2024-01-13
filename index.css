@@ -82,3 +82,10 @@
     padding-inline: 0px;
 
 }
+.card{
+    padding: 10px;
+    border: 1px solid;
+    color: black;
+    margin-top: 10px;
+
+}

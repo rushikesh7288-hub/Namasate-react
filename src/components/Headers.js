@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LOGO_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
+
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Headers = () => {
+  const [btnName, setBtnReact] = useState("Login");
 
-  const [btnName ,  setBtnReact] = useState("Login");
-
+  useEffect(() => {}, []);
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="header">
       <div className="logo-container">
@@ -11,16 +15,34 @@ const Headers = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About US</li>
-          <li>Contact US</li>
+          <li>Online Status:-{onlineStatus ? "🟢" : "🔴"}</li>
+          <li>
+            {" "}
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About US</Link>
+          </li>
+          <li>
+            <Link to="/conatct">Contact US</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
           <li>Cart</li>
-          <button className="login" onClick={ () =>{
-            btnName === "Login" ? setBtnReact("Logout") : setBtnReact("Login")
-          }}>{btnName}</button>
+          <button
+            className="login"
+            onClick={() => {
+              btnName === "Login"
+                ? setBtnReact("Logout")
+                : setBtnReact("Login");
+            }}
+          >
+            {btnName}
+          </button>
         </ul>
       </div>
     </div>
   );
 };
-export default Headers
+export default Headers;
