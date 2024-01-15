@@ -1,3 +1,4 @@
+import UserContext from "../utils/UserContext";
 import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
@@ -21,6 +22,7 @@ import React from "react";
 // };
 
 // export default About;
+
 
 class About extends React.Component {
   constructor(props) {
@@ -48,10 +50,18 @@ class About extends React.Component {
           city={"Sambhaji Nagar (Function Base Component)"}
           contact={"9604728888 (Function Base Component)"}
         />
+        <div className="flex"></div>
+        <div>
+          <label className="flex">
+            User Name :- <UserContext.Consumer> 
+              {({loggedInUser} )=> <h3>{loggedInUser}</h3>}
+            </UserContext.Consumer>
+          </label>
+        </div>
         <UserClass
-          // name={"Kamlesh Jadhav (Class Base Component)"}
-          // city={"Pune (Class Base Component)"}
-          // contact={"9604728888 (Class Base Component)"}
+        // name={"Kamlesh Jadhav (Class Base Component)"}
+        // city={"Pune (Class Base Component)"}
+        // contact={"9604728888 (Class Base Component)"}
         />
       </div>
     );

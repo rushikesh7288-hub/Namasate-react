@@ -15,7 +15,7 @@ const User = (props) => {
   }, []);
 //   console.log("render");
   return (
-    <div className="card">
+    <div className="card m-4 p-4 rounded-lg bg-gray-100 border border-solid border-black">
       <h1>count:-{count}</h1>
       <button
         onClick={() => {

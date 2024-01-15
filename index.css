@@ -1,4 +1,8 @@
-#headings {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* #headings {
   color: red;
 }
 .header {
@@ -88,4 +92,4 @@
     color: black;
     margin-top: 10px;
 
-}
+} */

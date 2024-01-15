@@ -21,9 +21,13 @@
   "homepage": "https://github.com/rushikesh7288-hub/Namasate-react#readme",
   "devDependencies": {
     "parcel": "^2.10.3",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.1"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1"

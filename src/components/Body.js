@@ -1,15 +1,16 @@
-import RestauranrCart from "./RestauranrCart";
-import { useState, useEffect } from "react";
+import RestauranrCart, { WithPromatedLable } from "./RestauranrCart";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
   const [filteredReastaurant, setFilteredReastaurant] = useState([]);
 
   const [searchText, setSearchText] = useState("");
-
+  const RestaturantPromated = WithPromatedLable(RestauranrCart);
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,6 +31,7 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  const { setUserName } = useContext(UserContext);
   //conditional rendering
   //   console.log(listOfRestaurants.length === 0);
   //   if (listOfRestaurants.length === 0) {
@@ -46,9 +48,9 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="Search">
+      <div className="Search m-2 p-4 text-center">
         <input
-          className="search-input"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           type="text"
           placeholder="search"
           value={searchText}
@@ -61,7 +63,7 @@ const Body = () => {
           }}
         ></input>
         <button
-          className="serch-btn"
+          className="px-4  py-2 m-4 bg-green-100 rounded-lg"
           onClick={() => {
             const filteredReastaurant = listOfRestaurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -72,7 +74,7 @@ const Body = () => {
           Search
         </button>
         <button
-          className="filter-btn"
+          className="filter-btn px-4  py-2 m-4 bg-gray-100 rounded-lg"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4.3
@@ -82,11 +84,27 @@ const Body = () => {
         >
           Top Rated Of Restaturant
         </button>
+        <div className="px-4  p-2">
+          <label>User Name:- </label>
+          <input
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+           focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700
+            dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+             dark:focus:border-blue-500" 
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
+        </div>
       </div>
-      <div className="resto-container">
+      <div className="resto-container flex flex-wrap w-10/12 justify-center m-auto">
         {filteredReastaurant.map((resturant, index) => (
           <Link to={"/reastaurat/" + resturant.info.id}>
-            <RestauranrCart resData={resturant} />
+            {resturant.info.isOpen ? (
+              <RestaturantPromated   resData={resturant} />
+            ) : (
+              <RestauranrCart  resData={resturant}  />
+            )}
           </Link>
         ))}
       </div>
