@@ -6,6 +6,7 @@ const RestauranrCart = (props) => {
   //   console.log(props);
 
   const { resData } = props;
+      // console.log(resData);
   const {
     name,
     cuisines,
@@ -16,7 +17,8 @@ const RestauranrCart = (props) => {
   } = resData?.info;
   const {loggedInUser} = useContext(UserContext);
   return (
-    <div className="m-4 p-4 w-[250px] h-[350px] rounded-lg bg-gray-100 hover:bg-gray-300">
+    <div className=" m-4 p-4 w-[250px] h-[350px] rounded-lg bg-gray-100 hover:bg-gray-300"
+    data-testid="restCard">
       <img
         alt="res-logo"
         className="rounded-lg h-[150px] w-[250px]"
